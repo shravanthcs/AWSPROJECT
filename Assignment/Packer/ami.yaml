@@ -1,0 +1,8 @@
+- name: Create AMI from running instance
+  hosts: localhost
+  vars:
+    instance_id: i-0bea2fa30c69a9bc0
+    ami_name: webapp-ami-image
+  tasks:
+    - name: Create AMI
+      command: aws ec2 create-image --instance-id {{ instance_id }} --name {{ ami_name }} --description "AMI for running instance" --no-reboot
